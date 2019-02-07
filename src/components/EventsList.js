@@ -18,8 +18,6 @@ class EventsList extends React.Component {
                         {events.map(this.renderEvents)}
                     </ul>}
             </div>
-
-
         )
     }
 
