@@ -3,6 +3,7 @@ import { loadEvents } from '../actions/events'
 import { connect } from 'react-redux'
 import EventsList from './EventsList'
 
+
 class EventsListContainer extends React.Component {
   componentDidMount() {
     this.props.loadEvents()
