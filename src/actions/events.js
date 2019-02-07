@@ -1,6 +1,7 @@
 import request from 'superagent'
 
 export const EVENTS_FETCHED = 'EVENTS_FETCHED'
+export const SINGLE_EVENT_FETCHED = 'SINGLE_EVENT_FETCHED'
 
 const baseUrl = 'http://localhost:4000'
 
@@ -33,6 +34,20 @@ export const createEvent = (data) => dispatch => {
     .send(data)
     .then(response => {
       dispatch(eventCreateSuccess(response.body))
+    })
+    .catch(console.error)
+}
+
+const singleEventFetched = event => ({
+  type: SINGLE_EVENT_FETCHED,
+  event
+})
+
+export const loadSingleEvent = (id) => dispatch => {
+  request
+    .get(`${baseUrl}/events/${id}`)
+    .then(response => {
+      dispatch (singleEventFetched(response.body))
     })
     .catch(console.error)
 }
